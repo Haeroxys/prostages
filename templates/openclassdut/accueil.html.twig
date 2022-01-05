@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
 
-    <h1>Bienvenue sur la page d'accueil de Prostages</h1>
+{% block contenu %}
+<h1>Bienvenue sur la page d'accueil de Prostages</h1>
 
-    <ul>
-        <li><a href="{{path('openclassdut_entreprises')}}">Entreprises</a></li>
-        <li><a href="{{path('openclassdut_formations')}}">Formations</a></li>
-        <li><a href="{{path('openclassdut_stages',{id:1})}}">Stages</a></li>
-    </ul>
-
-</body>
-</html>
+<ul>
+    <li><a href="{{path('openclassdut_entreprises')}}">Entreprises</a></li>
+    <li><a href="{{path('openclassdut_formations')}}">Formations</a></li>
+    <li><a href="{{path('openclassdut_stages',{id:1})}}">Stages</a></li>
+</ul>
+{% endblock %}
