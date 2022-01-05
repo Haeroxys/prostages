@@ -45,7 +45,7 @@ class OpenclassdutController extends AbstractController
     {
         return $this->render('openclassdut/stages.html.twig', [
             'controller_name' => 'OpenclassdutController',
-            'id' => $id,
+            'idStage' => $id,
         ]);
     }
 }
