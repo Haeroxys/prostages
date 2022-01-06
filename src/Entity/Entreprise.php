@@ -18,11 +18,6 @@ class Entreprise
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $code;
-
-    /**
      * @ORM\Column(type="string", length=50)
      */
     private $activite;
@@ -33,7 +28,7 @@ class Entreprise
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=25)
      */
     private $nom;
 

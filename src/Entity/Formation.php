@@ -18,12 +18,7 @@ class Formation
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $code;
-
-    /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=25)
      */
     private $nomCourt;
 
