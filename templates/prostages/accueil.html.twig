@@ -8,4 +8,15 @@
     <li><a href="{{path('prostages_formations')}}">Formations</a></li>
     <li><a href="{{path('prostages_stages',{id:1})}}">Stages</a></li>
 </ul>
+
+
+{% for stageCourant in stages %}
+
+    <div>{{stageCourant.id}}</div>
+    <a href="./entreprises">
+        <h4>{{stageCourant.titre}}</h4>
+    </a>
+
+{% endfor %}
+
 {% endblock %}
