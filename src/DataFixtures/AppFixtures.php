@@ -35,7 +35,6 @@ class AppFixtures extends Fixture
         }
 
         //entreprises
-        
         $nbEntreprise = 10;
 
         for ($i=0; $i < $nbEntreprise; $i++) { 
@@ -47,7 +46,30 @@ class AppFixtures extends Fixture
             $URLEntreprise = 'https://www.'.strtolower(str_replace(' ', '-', str_replace('.', '', $nomEntreprise))).'.fr';
             $entreprise->setURLsite($URLEntreprise);
 
+            $tableauDEntreprise[] = $entreprise;
+
             $manager->persist($entreprise);
+        }
+
+        //stages
+        $nbStage = 5;
+
+        for ($i=0; $i < $nbStage; $i++) { 
+            $stage = new Stage();
+            $stage->setTitre($faker->realText($maxNbChars = 50, $indexSize = 2));
+            $stage->setDescMission($faker->realText($maxNbChars = 100, $indexSize = 2));
+            $stage->setEmailContact($faker->email());
+            $stage->setEntreprises($faker->randomElement($tableauDEntreprise));
+
+            $nombreDeFormationsConcernees = $faker->numberBetween(1,3);
+            $formationsPouvantEtreChoisies = $tableauDeFormation;
+            for ($i=0; $i < $nombreDeFormationsConcernees; $i++) { 
+                $indiceFormation = $faker->numberBetween(0, count($formationsPouvantEtreChoisies)-1);
+                $formationAssocieeAuStage = $formationsPouvantEtreChoisies[$indiceFormation];
+                $stage->addFormation($formationAssocieeAuStage);
+                array_splice($formationsPouvantEtreChoisies, $indiceFormation, 1);
+            }
+            $manager->persist($stage);
         }
 
         $manager->flush();
