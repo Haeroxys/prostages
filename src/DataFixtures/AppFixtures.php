@@ -28,6 +28,27 @@ class AppFixtures extends Fixture
         $formationLPPA->setNomCourt('LPPA');
         $formationLPPA->setNomLong('Licence Professionnelle Programmation Avancée');
 
+        $tableauDeFormation = array($formationDUT,$formationLPMN,$formationLPPA);
+
+        foreach ($tableauDeFormation as $formation) {
+            $manager->persist($formation);
+        }
+
+        //entreprises
+        
+        $nbEntreprise = 10;
+
+        for ($i=0; $i < $nbEntreprise; $i++) { 
+            $entreprise = new Entreprise;
+            $entreprise->setActivite(join(' ',$faker->words($nb = 2, $asText = false)));
+            $entreprise->setAdresse($faker->address());
+            $nomEntreprise = $faker->company();
+            $entreprise->setNom($nomEntreprise);
+            $URLEntreprise = 'https://www.'.strtolower(str_replace(' ', '-', str_replace('.', '', $nomEntreprise))).'.fr';
+            $entreprise->setURLsite($URLEntreprise);
+
+            $manager->persist($entreprise);
+        }
 
         $manager->flush();
     }
