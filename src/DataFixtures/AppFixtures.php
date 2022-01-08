@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Formation;
+use App\Entity\Entreprise;
+use App\Entity\Stage;
 
 class AppFixtures extends Fixture
 {
@@ -13,14 +15,19 @@ class AppFixtures extends Fixture
         //Création d'un générateur de données faker
         $faker = \Faker\Factory::create('fr_FR');
         
-        $nbFormation = 5;
+        //formations
+        $formationDUT = new Formation();
+        $formationDUT->setNomCourt('DUT INFO');
+        $formationDUT->setNomLong('Diplôme Universitaire de Technologie Informatique');
 
-        for ($i=0; $i < $nbFormation; $i++) {
-            $forma = new Formation();
-            $forma->setNomCourt($faker->regexify('[A-Z]{3}'));
-            $forma->setNomLong($faker->realText($maxNbChars = 50, $indexSize = 2));
-            $manager->persist($forma);
-        }
+        $formationLPMN = new Formation();
+        $formationLPMN->setNomCourt('LPMN');
+        $formationLPMN->setNomLong('Licence Professionnelle Métiers du Numérique');
+
+        $formationLPPA = new Formation();
+        $formationLPPA->setNomCourt('LPPA');
+        $formationLPPA->setNomLong('Licence Professionnelle Programmation Avancée');
+
 
         $manager->flush();
     }
