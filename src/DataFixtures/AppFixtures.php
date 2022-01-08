@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
         }
 
         //stages
-        $nbStage = 5;
+        $nbStage = 20;
 
         for ($i=0; $i < $nbStage; $i++) { 
             $stage = new Stage();
@@ -63,12 +63,13 @@ class AppFixtures extends Fixture
 
             $nombreDeFormationsConcernees = $faker->numberBetween(1,3);
             $formationsPouvantEtreChoisies = $tableauDeFormation;
-            for ($i=0; $i < $nombreDeFormationsConcernees; $i++) { 
+            for ($y=0; $y < $nombreDeFormationsConcernees; $y++) { 
                 $indiceFormation = $faker->numberBetween(0, count($formationsPouvantEtreChoisies)-1);
                 $formationAssocieeAuStage = $formationsPouvantEtreChoisies[$indiceFormation];
                 $stage->addFormation($formationAssocieeAuStage);
                 array_splice($formationsPouvantEtreChoisies, $indiceFormation, 1);
             }
+
             $manager->persist($stage);
         }
 
