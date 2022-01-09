@@ -1,0 +1,24 @@
+body {
+    
+}
+
+[class*=col-]
+{
+    padding: 0%;
+    
+    text-align: center;
+    line-height: 35px;
+    background-color: lightgrey;
+    border: 1px solid black;
+}
+
+.element1{
+    border: 1px solid black;
+    width: 5%;
+
+}
+
+.element2{
+    border: 1px solid black;
+    width: 95%;
+}
