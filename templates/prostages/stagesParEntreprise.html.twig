@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-{{idEntreprise}}
+        <h3 class="titreSection">Stages proposés par l'entreprise {{entreprise.nom}}</h3>
+
+        <!--CARTES STAGES-->
+        {% for stageCourant in stages %}
+        <a class="carteStage" href="{{path('prostages_stageDetails',{id:stageCourant.id})}}">
+            <div class="idStage">{{stageCourant.id}}</div>
+            <div class="titreStage"><h5>{{stageCourant.titre}}</h5></div>
+            <div class="entrepriseStage">Entreprise</div>
+            <div class="formationStage">Formation</div>
+        </a>
+        {% endfor %}
+        <!--END CARTES STAGES-->
 {% endblock %}

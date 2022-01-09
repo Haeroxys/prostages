@@ -159,6 +159,21 @@ body {
     background-color: #0b5ed7
 }
 
+/*PAGE STAGE DÉTAILLÉ*/
+
+.cadreStageDétaillé {
+    background-color: darkgrey;
+    padding: 3%;
+}
+
+.annotation {
+    text-decoration: underline;
+}
+
+.descriptionMission {
+    font-style: italic;
+}
+
 /*FOOTER*/
 
 .footer {

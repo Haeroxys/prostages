@@ -1,5 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-{{stage.titre}}
+<div class="cadreStageDétaillé">
+    <div class="annotation">Titre du stage :</div>
+    <h3>{{stage.titre}}</h3>
+    <br>
+    <div class="annotation">Description de la mission :</div>
+    <p class="descriptionMission">{{stage.descMission}}</p>
+    <br>
+    <div class="annotation">Proposé par l'entreprise :</div>
+    <p>{{entreprise.nom}}</p>
+    <br>
+    <div class="annotation">Concerne la/les formation(s) :</div>
+    {% for formationCourante in formations %}
+        <p>{{formationCourante.nomCourt}}</p>
+    {% endfor %}
+    <br>
+    <div class="annotation">Email de contact :</div>
+    <p>{{stage.emailContact}}</p>
+<div>
 {% endblock %}
