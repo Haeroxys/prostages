@@ -1,7 +1,23 @@
-.card {
-    display: flex;
+.container-fluid {
+    /*padding: 0%;*/
 }
 
-.card-header {
-    width: 50%;
+.carte {
+    display: flex;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.idStage {
+    font-size: 20px;
+    padding: 0.5%;
+    width: 3%;
+    text-align: center;
+    border: 1px solid black;    
+}
+
+.titreStage, .entrepriseStage {
+    padding: 0.5%;
+    width: 48%;
+    border: 1px solid black;
 }

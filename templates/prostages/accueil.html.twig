@@ -5,22 +5,19 @@
     <div class="col-md-12">
         <!--CARTESTAGE-->
         <h4>---------- CARTESSTAGES ----------</h4>
+
         {% for stageCourant in stages %}
-        <div class="card">
-            <h5 class="card-header">
-                {{stageCourant.id}}
-            </h5>
-            <div class="card-body">
-                <p class="card-text">
-                    {{stageCourant.titre}}
-                </p>
-            </div>
+        <div class="carte">
+            <div class="idStage">{{stageCourant.id}}</div>
+            <div class="titreStage"><h5>{{stageCourant.titre}}</h5></div>
+            <div class="entrepriseStage">{{stageCourant.entreprises_id}}</div>
+            <div class="formationStage"></div>
         </div>
         {% endfor %}
+
         <!--ENDCARTESTAGE-->
     </div>
 </div>
-
 
 
 
