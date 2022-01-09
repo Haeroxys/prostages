@@ -1,6 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-<h1>Entreprises</h1>
-<p>Cette page affichera la liste des entreprises proposant un stage</p>
+<h3 class="titreSection">Entreprises</h3>
+<div class="row">
+    {% for entrepriseCourante in entreprises %}
+    <div class="col-md-3">
+        <div class="carteEntreprise">
+            <h4 class="nomEntreprise">
+                {{entrepriseCourante.nom}}
+            </h4>
+            <h5 class="activiteEntreprise">
+                Activité : {{entrepriseCourante.activite}}
+            </h5>
+            <div class="adresseEntreprise">
+                {{entrepriseCourante.adresse}}
+            </div>
+            <a class="siteEntreprise" href="#">
+                {{entrepriseCourante.URLsite}}
+            </a>
+            <br>
+            <br>
+            <a class="boutonCarteEntreprise" href="#">Découvrir les stages</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

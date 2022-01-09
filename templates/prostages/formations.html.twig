@@ -2,30 +2,23 @@
 
 {% block contenu %}
 <h3 class="titreSection">Formations</h3>
-
 <div class="row">
-    <div class="col-md-12">
-        <div class="row">
-
-            {% for formationCourante in formations %}
-            <div class="col-md-4">
-                <div class="carteFormation">
-                    <h4 class="titreCarteFormation">
-                        {{formationCourante.nomCourt}}
-                    </h4>
-                    <h5 class="titreTexteCarteFormation">
-                        {{formationCourante.nomLong}}
-                    </h5>
-                    <p class="texteCarteFormation">
-                        Sed nostrum id iste asperiores. Exercitationem ad at et sit et possimus. Dolor et ducimus odit quasi maiores aperiam. Harum quis qui enim veniam corporis ex est doloribus. Quasi magni quam voluptas et commodi fugit debitis. Perspiciatis ab a repellat alias numquam laudantium.
-                    </p>
-                        <a class="bouton" href="#">Découvrir les stages</a>
-                </div>
-            </div>
-            {% endfor %}
-
+    {% for formationCourante in formations %}
+    <div class="col-md-4">
+        <div class="carteFormation">
+            <h4 class="titreCarteFormation">
+                {{formationCourante.nomCourt}}
+            </h4>
+            <h5 class="titreTexteCarteFormation">
+                {{formationCourante.nomLong}}
+            </h5>
+            <p class="texteCarteFormation">
+                Sed nostrum id iste asperiores. Exercitationem ad at et sit et possimus. Dolor et ducimus odit quasi maiores aperiam. Harum quis qui enim veniam corporis ex est doloribus. Quasi magni quam voluptas et commodi fugit debitis. Perspiciatis ab a repellat alias numquam laudantium.
+            </p>
+            <a class="boutonCarteFormation" href="#">Découvrir les stages</a>
         </div>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
 
