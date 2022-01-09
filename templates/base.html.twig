@@ -47,10 +47,13 @@
             <!--ENDHEADER-->
             {% endblock %}
 
-            {% block contenu %}
-            <!--CONTENU-->
-            <!--ENDCONTENU-->
-            {% endblock %}
+            <div class="row">
+                <div class="col-md-12 sectionContenu">
+                    {% block contenu %}
+
+                    {% endblock %}
+                </div>
+            </div>
 
             {% block footer %}
             <!--FOOTER-->

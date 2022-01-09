@@ -50,8 +50,15 @@ class ProstagesController extends AbstractController
      */
     public function listerFormations(): Response
     {
+        //Récupérer le repository de l'entité Formation
+        $repositoryFormations = $this->getDoctrine()->getRepository(Formation::class);
+
+        //Récupérer les entreprises enregistrés en BD
+        $formations = $repositoryFormations->findAll();
+
+        //Envoyer les entreprises récupérés à la vue chargée de les afficher
         return $this->render('prostages/formations.html.twig', [
-            'controller_name' => 'ProstagesController',
+            'formations' => $formations,
         ]);
     }
 }
