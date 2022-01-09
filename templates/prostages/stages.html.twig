@@ -5,7 +5,7 @@
 
         <!--CARTES STAGES-->
         {% for stageCourant in stages %}
-        <a class="carteStage" href="/stages/{{stageCourant.id}}">
+        <a class="carteStage" href="{{path('prostages_stageDetail',{id:stageCourant.id})}}">
             <div class="idStage">{{stageCourant.id}}</div>
             <div class="titreStage"><h5>{{stageCourant.titre}}</h5></div>
             <div class="entrepriseStage">Entreprise</div>

@@ -63,7 +63,7 @@ class ProstagesController extends AbstractController
     }
 
     /**
-     * @Route("/stages/{id}", name="prostages_stagDetail")
+     * @Route("/stages/{id}", name="prostages_stageDetail")
      */
     public function afficherStageDetail($id): Response
     {
