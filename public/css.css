@@ -3,20 +3,23 @@ body {
 }
 
 /*MENU*/
+.menu {
+    background-color: dimgrey;
+}
 
 .titrePrincipal {
-    
+    margin: 0.5% 0% 0% 5%;
+    color: whitesmoke;
 }
 
 /*MENU NAV*/
 .nav {
     color: black;
-    background-color: darkgrey;
     font-size: 150%;
 }
 
 .nav-link {
-    color: black;
+    color:whitesmoke;
     transition: 0.2s;
 }
 
@@ -25,20 +28,21 @@ body {
     background-color: gainsboro;
 }
 
+/*PAGE STAGE*/
+.sectionStages {
+    padding: 2% 2% 1% 2%;
+}
+
 .titreSection {
     padding: 0.5% 0% 0.5% 0%;
+    margin-bottom: 1.5%;
     font-size: 200%;
     text-align: center;
     background-color: silver;
     border: 2px solid black;
 }
 
-/*PAGE STAGE*/
-.sectionStages {
-    padding: 2% 2% 0% 2%;
-}
-
-.carte {
+.carteStage {
     display: flex;
     color: black;
     text-decoration: none;
@@ -50,7 +54,7 @@ body {
     transition: 0.1s;
 }
 
-.carte:hover {
+.carteStage:hover {
     color: black;
     background-color: darkgrey;
 }
@@ -72,4 +76,12 @@ body {
     padding: 0.5%;
     width: 20%;
     border-left: 2px solid black;
+}
+
+/*FOOTER*/
+
+.footer {
+    color: whitesmoke;
+    background-color: dimgrey;
+    padding: 2% 4% 0% 4%;
 }
