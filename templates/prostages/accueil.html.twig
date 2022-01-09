@@ -1,33 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-<h1>Bienvenue sur la page d'accueil de Prostages</h1>
-
-<ul>
-    <li><a href="{{path('prostages_entreprises')}}">Entreprises</a></li>
-    <li><a href="{{path('prostages_formations')}}">Formations</a></li>
-    <li><a href="{{path('prostages_stages',{id:1})}}">Stages</a></li>
-</ul>
-
-
-{% for stageCourant in stages %}
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="element1">{{stageCourant.id}}</div>
-                <div class="element2">
-                    <a href="./entreprises">
-                        <h4>{{stageCourant.titre}}</h4>
-                    </a>
-                </div>
+<div class="row">
+    <div class="col-md-12">
+        <!--CARTESTAGE-->
+        <h4>---------- CARTESSTAGES ----------</h4>
+        {% for stageCourant in stages %}
+        <div class="card">
+            <h5 class="card-header">
+                {{stageCourant.id}}
+            </h5>
+            <div class="card-body">
+                <p class="card-text">
+                    {{stageCourant.titre}}
+                </p>
             </div>
         </div>
+        {% endfor %}
+        <!--ENDCARTESTAGE-->
     </div>
+</div>
 
-    <div></div>
 
 
-{% endfor %}
 
 {% endblock %}
