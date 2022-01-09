@@ -1,11 +1,58 @@
-.container-fluid {
-    /*padding: 0%;*/
+body {
+    background-color: gainsboro;
+}
+
+/*MENU*/
+
+.titrePrincipal {
+    
+}
+
+/*MENU NAV*/
+.nav {
+    color: black;
+    background-color: darkgrey;
+    font-size: 150%;
+}
+
+.nav-link {
+    color: black;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    color: dimgrey;
+    background-color: gainsboro;
+}
+
+.titreSection {
+    padding: 0.5% 0% 0.5% 0%;
+    font-size: 200%;
+    text-align: center;
+    background-color: silver;
+    border: 2px solid black;
+}
+
+/*PAGE STAGE*/
+.sectionStages {
+    padding: 2% 2% 0% 2%;
 }
 
 .carte {
     display: flex;
+    color: black;
+    text-decoration: none;
     margin-top: 10px;
-    border: 1px solid black;
+    background-color: silver;
+    border: 2px solid black;
+    border-radius: 15px;
+
+    transition: 0.1s;
+}
+
+.carte:hover {
+    color: black;
+    background-color: darkgrey;
 }
 
 .idStage {
@@ -13,11 +60,16 @@
     padding: 0.5%;
     width: 3%;
     text-align: center;
-    border: 1px solid black;    
+    border-right: 1px solid black;    
 }
 
-.titreStage, .entrepriseStage {
+.titreStage {
     padding: 0.5%;
-    width: 48%;
-    border: 1px solid black;
+    width: 57%;
+}
+
+.entrepriseStage, .formationStage {
+    padding: 0.5%;
+    width: 20%;
+    border-left: 2px solid black;
 }
