@@ -10,7 +10,7 @@
         <div class="titreStage"><h5>{{stageCourant.titre}}</h5></div>
         <div class="entrepriseStage">{{stageCourant.entreprises.nom}}</div>
         <div class="formationStage">
-        {% for formationCourante in stageCourant.getFormations() %}
+        {% for formationCourante in stageCourant.formations() %}
             {{formationCourante.nomCourt}}&nbsp;&nbsp;&nbsp;<!--Les "&nbsp;" servent juste à ajouter des espaces à la fin pour séparer les formations-->
         {% endfor %}
         </div>
