@@ -23,7 +23,7 @@ class StageRepository extends ServiceEntityRepository
     //  * @return Stage[] Returns an array of Stage objects
     //  */
 
-    public function trouverStagesEtEntreprisesEtFormations()
+    public function findAllStagesEtEntreprisesEtFormations()
     {
         return $this->createQueryBuilder('s')
             ->select('s,e,f')
@@ -32,8 +32,12 @@ class StageRepository extends ServiceEntityRepository
             ->orderBy('s.id')
             ->getQuery()
             ->getResult()
-        ;   
-    
+        ;
+    }
+
+    public function findStageById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT s FROM App\Entity\Stage WHERE s.id = $id')->execute();
     }
     /*
     public function findByExampleField($value)

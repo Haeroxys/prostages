@@ -20,7 +20,7 @@ class ProstagesController extends AbstractController
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         //Récupérer les stages enregistrés en BD
-        $stages = $repositoryStage->trouverStagesEtEntreprisesEtFormations();
+        $stages = $repositoryStage->findAllStagesEtEntreprisesEtFormations();
 
         //Envoyer les stages récupérés à la vue chargée de les afficher
         return $this->render('prostages/stages.html.twig', [
@@ -71,14 +71,10 @@ class ProstagesController extends AbstractController
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         //Récupérer les stages enregistrés en BD
-        $stage = $repositoryStage->find($id);
-        $entreprise = $stage->getEntreprises();
-        $formations = $stage->getFormations();
+        $stage = $repositoryStage->findStageById($id);
 
         return $this->render('prostages/stageDetails.html.twig', [
             'stage' => $stage,
-            'entreprise' => $entreprise,
-            'formations' => $formations,
         ]);
     }
 
