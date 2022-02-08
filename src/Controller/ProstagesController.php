@@ -87,12 +87,10 @@ class ProstagesController extends AbstractController
         $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 
         //Récupérer les stages enregistrés en BD
-        $entreprise = $repositoryEntreprise->find($id);
-        $stages = $entreprise->getStages();
+        $entreprise = $repositoryEntreprise->findByEntrepriseId($id);
 
         return $this->render('prostages/stagesParEntreprise.html.twig', [
             'entreprise' => $entreprise,
-            'stages' => $stages,
         ]);
     }
     

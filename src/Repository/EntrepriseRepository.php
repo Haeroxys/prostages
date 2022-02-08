@@ -19,6 +19,19 @@ class EntrepriseRepository extends ServiceEntityRepository
         parent::__construct($registry, Entreprise::class);
     }
 
+    public function findByEntrepriseId($entrepriseId)
+    {
+        return $this->createQueryBuilder('e')
+        ->select('e,s')
+        ->join('e.stages','s')
+        ->where('e.id = :IDentreprise')
+        ->setParameter('IDentreprise', $entrepriseId)
+        ->orderBy('s.id')
+        ->getQuery()
+        ->getResult()
+    ;
+    }
+
     // /**
     //  * @return Entreprise[] Returns an array of Entreprise objects
     //  */

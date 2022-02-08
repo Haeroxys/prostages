@@ -37,8 +37,16 @@ class StageRepository extends ServiceEntityRepository
 
     public function findStageById($id)
     {
-        return $this->getEntityManager()->createQuery('SELECT s FROM App\Entity\Stage WHERE s.id = $id')->execute();
+        return $this->createQueryBuilder('s')
+        ->select('s')
+        ->where('s.id = :IdStage')
+        ->setParameter('IdStage', $id)
+        ->orderBy('s.id')
+        ->getQuery()
+        ->getResult()
+    ;
     }
+
     /*
     public function findByExampleField($value)
     {
