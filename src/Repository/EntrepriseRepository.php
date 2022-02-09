@@ -22,13 +22,14 @@ class EntrepriseRepository extends ServiceEntityRepository
     public function findByEntrepriseId($entrepriseId)
     {
         return $this->createQueryBuilder('e')
-        ->select('e,s')
+        ->select('e,s,f')
         ->join('e.stages','s')
+        ->join('s.formations','f')
         ->where('e.id = :IDentreprise')
         ->setParameter('IDentreprise', $entrepriseId)
         ->orderBy('s.id')
         ->getQuery()
-        ->getResult()
+        ->getOneOrNullResult()
     ;
     }
 

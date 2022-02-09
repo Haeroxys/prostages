@@ -103,12 +103,10 @@ class ProstagesController extends AbstractController
         $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
 
         //Récupérer les stages enregistrés en BD
-        $formation = $repositoryFormation->find($id);
-        $stages = $formation->getStages();
+        $formation = $repositoryFormation->findByFormationId($id);
 
         return $this->render('prostages/stagesParFormation.html.twig', [
             'formation' => $formation,
-            'stages' => $stages,
         ]);
     }
 }

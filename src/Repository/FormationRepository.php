@@ -19,6 +19,20 @@ class FormationRepository extends ServiceEntityRepository
         parent::__construct($registry, Formation::class);
     }
 
+    public function findByFormationId($formation)
+    {
+        return $this->createQueryBuilder('f')
+        ->select('f,s,e')
+        ->join('f.stages','s')
+        ->join('s.entreprises','e')
+        ->where('f.id = :IDformation')
+        ->setParameter('IDformation', $formation)
+        ->orderBy('s.id')
+        ->getQuery()
+        ->getOneOrNullResult()
+    ;
+    }
+
     // /**
     //  * @return Formation[] Returns an array of Formation objects
     //  */
