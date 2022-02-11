@@ -79,6 +79,29 @@ class ProstagesController extends AbstractController
     }
 
     /**
+     * @Route("/entreprises/ajouter", name="prostages_formulaireAjoutEntreprise")
+     */
+    public function afficherFormulaireAjoutEntreprise(): Response
+    {
+        //création d'une nouvelle entreprise
+        $entreprise = new Entreprise();
+
+        //création d'un objet formulaire pour saisir une entreprise
+        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
+                                      -> add('activite')
+                                      -> add('adresse')
+                                      -> add('nom')
+                                      -> add('urlSite')
+                                      -> getForm();
+        ;
+
+        //affichage de la page d'ajout d'une entreprise
+        return $this->render('prostages/formulaireAjoutEntreprise.html.twig', [
+            'vueFormulaireEntreprise' => $formulaireEntreprise -> createView()
+        ]);
+    }
+
+    /**
      * @Route("/entreprises/{id}", name="prostages_stagesParEntreprise")
      */
     public function afficherStagesParEntreprise($id): Response
@@ -107,29 +130,6 @@ class ProstagesController extends AbstractController
 
         return $this->render('prostages/stagesParFormation.html.twig', [
             'formation' => $formation,
-        ]);
-    }
-
-    /**
-     * @Route("/entreprises/ajouter", name="prostages_ajouterEntreprise")
-     */
-    public function ajouterEntreprise(): Response
-    {
-        //création d'une nouvelle entreprise
-        $entreprise = new Entreprise();
-
-        //création d'un objet formulaire pour saisir une entreprise
-        $formulaireentreprise = $this -> createFormBuilder($entreprise)
-                                      -> add('activite')
-                                      -> add('adresse')
-                                      -> add('nom')
-                                      -> add('urlSite')
-                                      -> getForm();
-        ;
-
-        //affichage de la page d'ajout d'une entreprise
-        return $this->render('prostages/ajouterEntreprise.html.twig', [
-            'vueFormulaireEntreprise' => $vueFormulaireEntreprise
         ]);
     }
 }
