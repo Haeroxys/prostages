@@ -1,5 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-{{ form(vueFormulaireEntreprise) }}
+{{ form_start (vueFormulaireEntreprise) }}
+    <div>
+        {{ form_row (vueFormulaireEntreprise.nom)}}
+    </div>
+    <div>
+        {{ form_row (vueFormulaireEntreprise.adresse)}}
+    </div>
+    <div>
+        {{ form_row (vueFormulaireEntreprise.activite)}}
+    </div>
+    <div>
+        {{ form_row (vueFormulaireEntreprise.urlSite)}}
+    </div>
+{{ form_end (vueFormulaireEntreprise) }}
 {% endblock %}

@@ -26,27 +26,27 @@ class StageRepository extends ServiceEntityRepository
     public function findAllStagesEtEntreprisesEtFormations()
     {
         return $this->createQueryBuilder('s')
-            ->select('s,e,f')
-            ->join('s.entreprises','e')
-            ->join('s.formations','f')
-            ->orderBy('s.id')
-            ->getQuery()
-            ->getResult()
+                    ->select('s,e,f')
+                    ->join('s.entreprises','e')
+                    ->join('s.formations','f')
+                    ->orderBy('s.id')
+                    ->getQuery()
+                    ->getResult()
         ;
     }
 
     public function findStageById($id)
     {
         return $this->createQueryBuilder('s')
-        ->select('s,e,f')
-        ->join('s.entreprises','e')
-        ->join('s.formations','f')
-        ->where('s.id = :IdStage')
-        ->setParameter('IdStage', $id)
-        ->orderBy('s.id')
-        ->getQuery()
-        ->getOneOrNullResult()
-    ;
+                    ->select('s,e,f')
+                    ->join('s.entreprises','e')
+                    ->join('s.formations','f')
+                    ->where('s.id = :IdStage')
+                    ->setParameter('IdStage', $id)
+                    ->orderBy('s.id')
+                    ->getQuery()
+                    ->getOneOrNullResult()
+        ;
     }
 
     /*

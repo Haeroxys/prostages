@@ -22,15 +22,15 @@ class EntrepriseRepository extends ServiceEntityRepository
     public function findByEntrepriseId($entrepriseId)
     {
         return $this->createQueryBuilder('e')
-        ->select('e,s,f')
-        ->join('e.stages','s')
-        ->join('s.formations','f')
-        ->where('e.id = :IDentreprise')
-        ->setParameter('IDentreprise', $entrepriseId)
-        ->orderBy('s.id')
-        ->getQuery()
-        ->getOneOrNullResult()
-    ;
+                    ->select('e,s,f')
+                    ->join('e.stages','s')
+                    ->join('s.formations','f')
+                    ->where('e.id = :IDentreprise')
+                    ->setParameter('IDentreprise', $entrepriseId)
+                    ->orderBy('s.id')
+                    ->getQuery()
+                    ->getOneOrNullResult()
+        ;
     }
 
     // /**
@@ -40,12 +40,12 @@ class EntrepriseRepository extends ServiceEntityRepository
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+                    ->andWhere('e.exampleField = :val')
+                    ->setParameter('val', $value)
+                    ->orderBy('e.id', 'ASC')
+                    ->setMaxResults(10)
+                    ->getQuery()
+                    ->getResult()
         ;
     }
     */
@@ -54,10 +54,10 @@ class EntrepriseRepository extends ServiceEntityRepository
     public function findOneBySomeField($value): ?Entreprise
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+                    ->andWhere('e.exampleField = :val')
+                    ->setParameter('val', $value)
+                    ->getQuery()
+                    ->getOneOrNullResult()
         ;
     }
     */
