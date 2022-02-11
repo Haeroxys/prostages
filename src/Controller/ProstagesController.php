@@ -109,4 +109,27 @@ class ProstagesController extends AbstractController
             'formation' => $formation,
         ]);
     }
+
+    /**
+     * @Route("/entreprises/ajouter", name="prostages_ajouterEntreprise")
+     */
+    public function ajouterEntreprise(): Response
+    {
+        //création d'une nouvelle entreprise
+        $entreprise = new Entreprise();
+
+        //création d'un objet formulaire pour saisir une entreprise
+        $formulaireentreprise = $this -> createFormBuilder($entreprise)
+                                      -> add('activite')
+                                      -> add('adresse')
+                                      -> add('nom')
+                                      -> add('urlSite')
+                                      -> getForm();
+        ;
+
+        //affichage de la page d'ajout d'une entreprise
+        return $this->render('prostages/ajouterEntreprise.html.twig', [
+            'vueFormulaireEntreprise' => $vueFormulaireEntreprise
+        ]);
+    }
 }
