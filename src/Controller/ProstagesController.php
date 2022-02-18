@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,8 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
-use App\Repository\EntrepriseRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 
 class ProstagesController extends AbstractController
 {
@@ -87,7 +86,7 @@ class ProstagesController extends AbstractController
     /**
      * @Route("/entreprises/ajouter", name="prostages_ajouterEntreprise")
      */
-    public function ajoutEntreprise(Request $requeteHttp, ObjectManager $manager)
+    public function ajoutEntreprise(Request $requeteHttp, EntityManagerInterface $manager)
     {
         //création d'une nouvelle entreprise
         $entreprise = new Entreprise();

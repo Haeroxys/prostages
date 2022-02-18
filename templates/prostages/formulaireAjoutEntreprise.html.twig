@@ -3,16 +3,17 @@
 {% block contenu %}
 {{ form_start (vueFormulaireEntreprise) }}
     <div>
-        {{ form_row (vueFormulaireEntreprise.nom)}}
+        {{ form_row (vueFormulaireEntreprise.nom, {'label' : 'Nom de l\'entreprise'})}}
     </div>
     <div>
         {{ form_row (vueFormulaireEntreprise.adresse)}}
     </div>
     <div>
-        {{ form_row (vueFormulaireEntreprise.activite)}}
+        {{ form_row (vueFormulaireEntreprise.activite, {'label' : 'Activité'})}}
     </div>
     <div>
-        {{ form_row (vueFormulaireEntreprise.urlSite)}}
+        {{ form_row (vueFormulaireEntreprise.urlSite, {'label' : 'URL du site web'})}}
     </div>
+    <button>Envoyer</button>
 {{ form_end (vueFormulaireEntreprise) }}
 {% endblock %}
