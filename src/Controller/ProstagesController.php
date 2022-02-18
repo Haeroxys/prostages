@@ -4,10 +4,16 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextAreaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Repository\EntrepriseRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ProstagesController extends AbstractController
 {
@@ -79,25 +85,40 @@ class ProstagesController extends AbstractController
     }
 
     /**
-     * @Route("/entreprises/ajouter", name="prostages_formulaireAjoutEntreprise")
+     * @Route("/entreprises/ajouter", name="prostages_ajouterEntreprise")
      */
-    public function afficherFormulaireAjoutEntreprise(): Response
+    public function ajoutEntreprise(Request $requeteHttp, ObjectManager $manager)
     {
         //création d'une nouvelle entreprise
         $entreprise = new Entreprise();
 
         //création d'un objet formulaire pour saisir une entreprise
         $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                      -> add('nom')
-                                      -> add('adresse')
-                                      -> add('activite')
-                                      -> add('urlSite')
+                                      -> add('nom', TextType::class)
+                                      -> add('adresse', TextType::class)
+                                      -> add('activite', TextType::class)
+                                      -> add('urlSite', UrlType::class)
                                       -> getForm();
         ;
 
+        //récupération des données dans $entreprise si elles ont été soumises
+        $formulaireEntreprise->handleRequest($requeteHttp);
+
+        //traiter les données du formulaire s'il a été soumis
+        if($formulaireEntreprise->isSubmitted())
+        {
+            //enregistrer l'entreprise en BD
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            //rediriger l'utilisateur vers la page affichant la liste des entreprises
+            return $this->redirectToRoute('prostages_entreprises');
+        }
+
+
         //affichage de la page d'ajout d'une entreprise
         return $this->render('prostages/formulaireAjoutEntreprise.html.twig', [
-            'vueFormulaireEntreprise' => $formulaireEntreprise -> createView()
+            'vueFormulaireEntreprise' => $formulaireEntreprise->createView()
         ]);
     }
 
