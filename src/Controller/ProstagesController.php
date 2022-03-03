@@ -7,14 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextAreaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Form\EntrepriseType;
 
 class ProstagesController extends AbstractController
 {
@@ -94,13 +93,7 @@ class ProstagesController extends AbstractController
         $entreprise = new Entreprise();
 
         //création d'un objet formulaire pour saisir une entreprise
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                      -> add('nom', TextType::class)
-                                      -> add('adresse', TextType::class)
-                                      -> add('activite', TextType::class)
-                                      -> add('urlSite', UrlType::class)
-                                      -> getForm();
-        ;
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
 
         //récupération des données dans $entreprise si elles ont été soumises
         $formulaireEntreprise->handleRequest($requeteHttp);
