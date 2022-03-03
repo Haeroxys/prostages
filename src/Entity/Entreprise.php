@@ -6,6 +6,7 @@ use App\Repository\EntrepriseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EntrepriseRepository::class)
@@ -21,21 +22,25 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank(message="L'activité doit être renseignée")
      */
     private $activite;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="L'adresse doit être renseignée")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank(message="Le nom doit être renseigné")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Url(message="Le nom doit être renseigné")
      */
     private $URLsite;
 

@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextAreaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
@@ -104,7 +106,7 @@ class ProstagesController extends AbstractController
         $formulaireEntreprise->handleRequest($requeteHttp);
 
         //traiter les données du formulaire s'il a été soumis
-        if($formulaireEntreprise->isSubmitted())
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             //enregistrer l'entreprise en BD
             $manager->persist($entreprise);
