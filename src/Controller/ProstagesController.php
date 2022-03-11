@@ -111,8 +111,39 @@ class ProstagesController extends AbstractController
 
 
         //affichage de la page d'ajout d'une entreprise
-        return $this->render('prostages/formulaireAjoutEntreprise.html.twig', [
-            'vueFormulaireEntreprise' => $formulaireEntreprise->createView()
+        return $this->render('prostages/formulaireAjoutModifEntreprise.html.twig', [
+            'vueFormulaireEntreprise' => $formulaireEntreprise->createView(),
+            'action' => 'ajouter'
+        ]);
+    }
+
+    /**
+     * @Route("/entreprises/modifier/{id}", name="prostages_modifierEntreprise")
+     */
+    public function modificationEntreprise(Request $requeteHttp, EntityManagerInterface $manager, Entreprise $entreprise)
+    {
+        //création d'un objet formulaire pour modifier une entreprise
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
+
+        //récupération des données dans $entreprise si elles ont été soumises
+        $formulaireEntreprise->handleRequest($requeteHttp);
+
+        //traiter les données du formulaire s'il a été soumis
+        if($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
+        {
+            //enregistrer l'entreprise en BD
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            //rediriger l'utilisateur vers la page affichant la liste des entreprises
+            return $this->redirectToRoute('prostages_entreprises');
+        }
+
+
+        //affichage de la page d'ajout d'une entreprise
+        return $this->render('prostages/formulaireAjoutModifEntreprise.html.twig', [
+            'vueFormulaireEntreprise' => $formulaireEntreprise->createView(),
+            'action' => 'modifier'
         ]);
     }
 

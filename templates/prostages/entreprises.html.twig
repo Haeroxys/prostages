@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+Entreprises
+{% endblock %}
+
 {% block contenu %}
 <h3 class="titreSection">Entreprises</h3>
 <div class="row">
@@ -21,6 +25,9 @@
             <br>
             <br>
             <a class="boutonCarteEntreprise" href="{{path('prostages_stagesParEntreprise',{id:entrepriseCourante.id})}}">Découvrir les stages</a>
+            <br>
+            <br>
+            <a href="{{path('prostages_modifierEntreprise',{id:entrepriseCourante.id})}}">Modifier l'entreprise</a>
         </div>
     </div>
     {% endfor %}
