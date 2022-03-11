@@ -17,7 +17,7 @@ class EntrepriseType extends AbstractType
             ->add('nom', TextType::class)
             ->add('adresse', TextType::class)
             ->add('activite', TextType::class)
-            ->add('urlSite', UrlType::class)
+            ->add('URLsite', UrlType::class)
         ;
     }
 

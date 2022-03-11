@@ -9,7 +9,7 @@ Modification entreprise
 {% endblock %}
 
 {% block contenu %}
-{{ form_start (vueFormulaireEntreprise) }}
+{{ form_start (vueFormulaireEntreprise, {'attr' : {'novalidate': 'novalidate'}}) }}
     <div>
         {{ form_row (vueFormulaireEntreprise.nom, {'label' : 'Nom de l\'entreprise'})}}
     </div>
@@ -20,7 +20,7 @@ Modification entreprise
         {{ form_row (vueFormulaireEntreprise.activite, {'label' : 'Activité'})}}
     </div>
     <div>
-        {{ form_row (vueFormulaireEntreprise.urlSite, {'label' : 'URL du site web'})}}
+        {{ form_row (vueFormulaireEntreprise.URLsite, {'label' : 'URL du site web'})}}
     </div>
     <button>Envoyer</button>
 {{ form_end (vueFormulaireEntreprise) }}

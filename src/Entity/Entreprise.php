@@ -29,18 +29,26 @@ class Entreprise
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="L'adresse doit être renseignée")
+     * @Assert\Regex("/\d{2},? (impasse|rue|avenue|place|chemin|boulevard) [a-zA-Z\s]+ (\d){2}\s?(\d){3} [a-zA-Z\s]+/")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=25)
-     * @Assert\NotBlank(message="Le nom doit être renseigné")
+     * @Assert\NotBlank(message="Le nom doit faire au minimum 4 caractères")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 25,
+     *      minMessage = "Le nom doit faire au minimum {{ limit }} caractères",
+     *      maxMessage = "Le nom doit faire au maximum {{ limit }} caractères"
+     * )
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\Url(message="Le nom doit être renseigné")
+     * @Assert\NotBlank(message="L'URL doit être renseignée")
+     * @Assert\Url
      */
     private $URLsite;
 
