@@ -29,7 +29,7 @@ class Entreprise
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="L'adresse doit être renseignée")
-     * @Assert\Regex("/\d{2},? (impasse|rue|avenue|place|chemin|boulevard) [a-zA-Z\s]+ (\d){2}\s?(\d){3} [a-zA-Z\s]+/")
+     * @Assert\Regex("/\d+ (impasse|rue|avenue|place|chemin|boulevard) [a-zA-Z\s]+ \d{5} [a-zA-Z\s]+/")
      */
     private $adresse;
 
