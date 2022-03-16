@@ -3,23 +3,33 @@
 namespace App\Form;
 
 use App\Entity\Stage;
+use App\Entity\Formation;
+use App\Entity\Entreprise;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextAreaType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class StageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class)
-            ->add('descMission', TextAreaType::class)
+            ->add('titre')
+            ->add('descMission', TextareaType::class)
             ->add('emailContact', EmailType::class)
-            ->add('formations')
-            ->add('entreprises')
+            ->add('formations', EntityType::class,
+                                    ['class' => Formation::class,
+                                        'choice_label' => 'nomCourt',
+                                        'multiple' => true,
+                                        'expanded' => true ])
+            ->add('entreprise', EntityType::class,
+                                    ['class' => Entreprise::class,
+                                        'choice_label' => 'id',
+                                        'multiple' => false,
+                                        'expanded' => true ])
         ;
     }
 

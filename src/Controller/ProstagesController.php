@@ -14,6 +14,7 @@ use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 use App\Form\EntrepriseType;
+use App\Form\StageType;
 
 class ProstagesController extends AbstractController
 {
@@ -31,6 +32,39 @@ class ProstagesController extends AbstractController
         //Envoyer les stages récupérés à la vue chargée de les afficher
         return $this->render('prostages/stages.html.twig', [
             'stages' => $stages,
+        ]);
+    }
+
+    /**
+     * @Route("/stage/ajouter", name="prostages_ajouterStage")
+     */
+    public function ajoutStage(Request $requeteHttp, EntityManagerInterface $manager)
+    {
+        //création d'un nouveau stage
+        $stage = new Stage();
+
+        //création d'un objet formulaire pour saisir un stage
+        $formulaireStage = $this -> createForm(StageType::class, $stage);
+
+        //récupération des données dans $formulaireStage si elles ont été soumises
+        $formulaireStage->handleRequest($requeteHttp);
+
+        //traiter les données du formulaire s'il a été soumis
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid())
+        {
+            //enregistrer le stage en BD
+            $manager->persist($stage);
+            $manager->flush();
+
+            //rediriger l'utilisateur vers la page affichant la liste des stages
+            return $this->redirectToRoute('prostages_stages');
+        }
+
+
+        //affichage de la page d'ajout d'un stage
+        return $this->render('prostages/formulaireAjoutStage.html.twig', [
+            'vueFormulaireStage' => $formulaireStage->createView(),
+            'action' => 'ajouter'
         ]);
     }
 

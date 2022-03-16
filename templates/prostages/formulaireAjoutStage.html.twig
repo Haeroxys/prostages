@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% if action == 'ajouter' %}
+Ajout stage
+{% else %}
+Modification stage
+{% endif %}
+{% endblock %}
+
+{% block contenu %}
+{{ form_start (vueFormulaireStage) }}
+    <div>
+        {{ form_row (vueFormulaireStage.titre, {'label' : 'Titre du stage'}) }}
+    </div>
+    <div>
+        {{ form_row (vueFormulaireStage.descMission, {'label' : 'Description de la mission'}) }}
+    </div>
+    <div>
+        {{ form_row (vueFormulaireStage.emailContact, {'label' : 'email de contact'}) }}
+    </div>
+    <div>
+        {{ form_row (vueFormulaireStage.formations, {'label' : 'Formation(s)'}) }}
+    </div>
+    <button>Envoyer</button>
+{{ form_end (vueFormulaireStage) }}
+{% endblock %}
