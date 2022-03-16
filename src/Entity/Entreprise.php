@@ -23,6 +23,12 @@ class Entreprise
     /**
      * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank(message="L'activité doit être renseignée")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 25,
+     *      minMessage = "L'activité doit faire au minimum {{ limit }} caractères", 
+     *      maxMessage = "L'activité doit faire au maximum {{ limit }} caractères"
+     * )
      */
     private $activite;
 
@@ -30,6 +36,10 @@ class Entreprise
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="L'adresse doit être renseignée")
      * @Assert\Regex("/\d+ (impasse|rue|avenue|place|chemin|boulevard) [a-zA-Z\s]+ \d{5} [a-zA-Z\s]+/")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "L'adresse doit faire au maximum {{ limit }} caractères"
+     * )
      */
     private $adresse;
 
@@ -49,6 +59,10 @@ class Entreprise
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="L'URL doit être renseignée")
      * @Assert\Url
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom doit faire au maximum {{ limit }} caractères"
+     * )
      */
     private $URLsite;
 
