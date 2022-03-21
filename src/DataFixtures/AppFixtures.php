@@ -16,17 +16,17 @@ class AppFixtures extends Fixture
 
         //Création de 2 utilisateurs de test
         $utilisateur = new User();
-        $utilisateur->setNom("Nune nies");
-        $utilisateur->setUsername("Nunez");
+        $utilisateur->setNom("userNAME");
+        $utilisateur->setUsername("user");
         $utilisateur->setRoles(['ROLE_USER']);
-        $utilisateur->setPassword('$2y$10$7HgapABCkHAa2UMGunPVounGvAtmVJqbZnpWdiOgsmu0PoyKLYAy.');
+        $utilisateur->setPassword('$2y$10$Zz/.jMdREJfZZU9z.M.4CuGF791VYnsDrYNqY24U573cLTe.E3K.S');
         $manager->persist($utilisateur);
 
         $admin = new User();
-        $admin->setNom("Les derts");
-        $admin->setUsername("Leydert");
+        $admin->setNom("adminNAME");
+        $admin->setUsername("admin");
         $admin->setRoles(['ROLE_USER','ROLE_ADMIN']);
-        $admin->setPassword('$2y$10$ItB1PkG.aOlfwbVe9QYAXu76w5WYQ6DGMemJbZMd16mEGdepgtnry');
+        $admin->setPassword('$2y$10$flXEkuNt1ewzaJSiEopeKeKOG.GaforJ453k5nx3r10qq8cSoWeoi');
         $manager->persist($admin);
 
         //Création d'un générateur de données faker
