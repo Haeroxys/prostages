@@ -12,10 +12,11 @@
         <div class="mb-3">
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
-    {% endif %}
+    {% else %}
 
     <label for="inputUsername">Nom d'utilisateur</label>
     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <br>
     <label for="inputPassword">Mot de passe</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
@@ -38,5 +39,8 @@
     <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
     </button>
+
+    {% endif %}
+
 </form>
 {% endblock %}
