@@ -27,10 +27,14 @@ Entreprises
             <a class="boutonCarteEntreprise" href="{{path('prostages_stagesParEntreprise',{id:entrepriseCourante.id})}}">Découvrir les stages</a>
             <br>
             <br>
+            {% if is_granted('ROLE_ADMIN') %}
             <a href="{{path('prostages_modifierEntreprise',{id:entrepriseCourante.id})}}">Modifier l'entreprise</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}
 </div>
+{% if is_granted('ROLE_ADMIN') %}
 <a href="{{path('prostages_ajouterEntreprise')}}" >Ajouter une entreprise</a>
+{% endif %}
 {% endblock %}

@@ -152,7 +152,7 @@ class ProstagesController extends AbstractController
     }
 
     /**
-     * @Route("/entreprises/modifier/{id}", name="prostages_modifierEntreprise")
+     * @Route("/admin/modifier/entreprises/{id}", name="prostages_modifierEntreprise")
      */
     public function modificationEntreprise(Request $requeteHttp, EntityManagerInterface $manager, Entreprise $entreprise)
     {

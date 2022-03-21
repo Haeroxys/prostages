@@ -15,8 +15,8 @@ body {
 
 /*MENU NAV*/
 .nav {
-    color: black;
     font-size: 150%;
+    float: left;
 }
 
 .nav-link {
@@ -27,6 +27,21 @@ body {
 .nav-link:hover {
     color: dimgrey;
     background-color: gainsboro;
+}
+
+.connect-disconnect-navlink {
+    border: whitesmoke 1px solid;
+    border-radius: 10px;
+    padding: 0.5%;
+    text-decoration: none;
+    color:whitesmoke;
+    float: right;
+    transition: 0.2s;
+}
+
+.connect-disconnect-navlink:hover {
+    color: dimgrey;
+    background-color: whitesmoke;
 }
 
 /*PAGE STAGE*/
