@@ -1,10 +1,15 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory:
-            memory:
-                admin: { password: admin, roles: ROLE_ADMIN }
-                user: { password: user, roles: ROLE_USER }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
 
     firewalls:
         dev:
@@ -12,7 +17,7 @@ security:
             security: false
         main:
             anonymous: lazy
-            provider: users_in_memory
+            provider: app_user_provider
 
             http_basic: true
             # activate different ways to authenticate
