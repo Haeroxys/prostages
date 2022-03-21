@@ -29,6 +29,15 @@ body {
     background-color: gainsboro;
 }
 
+.current-user-username {
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 0.1% 0.4% 0.1% 0.4%;
+    margin: 0.4% 1% 0.4% 0.4%;
+    float: right;
+    color: whitesmoke;
+}
+
 .connect-disconnect-navlink {
     border: whitesmoke 1px solid;
     border-radius: 10px;

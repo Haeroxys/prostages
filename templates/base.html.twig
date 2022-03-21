@@ -44,6 +44,7 @@
 
                     {% if is_granted('ROLE_USER') %}
                     <a class="connect-disconnect-navlink" href="{{ path('app_logout') }}" >Se déconnecter</a>
+                    <div class="current-user-username">Connecté en tant que : {{ app.user.username }}</div>
                     {% else %}
                     <a class="connect-disconnect-navlink" href="{{ path('app_login') }}" >Se connecter</a>
                     {% endif %}
