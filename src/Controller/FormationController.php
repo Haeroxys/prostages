@@ -12,20 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/formation")
+ * @Route("/admin/formation")
  */
 class FormationController extends AbstractController
 {
-    /**
-     * @Route("/", name="formation_index", methods={"GET"})
-     */
-    public function index(FormationRepository $formationRepository): Response
-    {
-        return $this->render('formation/index.html.twig', [
-            'formations' => $formationRepository->findAll(),
-        ]);
-    }
-
     /**
      * @Route("/new", name="formation_new", methods={"GET", "POST"})
      */
@@ -39,7 +29,7 @@ class FormationController extends AbstractController
             $entityManager->persist($formation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('formation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('prostages_formations', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('formation/new.html.twig', [
@@ -69,7 +59,7 @@ class FormationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('formation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('prostages_formations', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('formation/edit.html.twig', [
@@ -88,6 +78,6 @@ class FormationController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('formation_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('prostages_formations', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -20,9 +20,16 @@ Formations
                 Sed nostrum id iste asperiores. Exercitationem ad at et sit et possimus. Dolor et ducimus odit quasi maiores aperiam. Harum quis qui enim veniam corporis ex est doloribus. Quasi magni quam voluptas et commodi fugit debitis. Perspiciatis ab a repellat alias numquam laudantium.
             </p>
             <a class="boutonCarteFormation" href="{{path('prostages_stagesParFormation',{id:formationCourante.id})}}">Découvrir les stages</a>
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('formation_show', {'id': formationCourante.id}) }}">Consulter</a>
+            <a href="{{ path('formation_edit', {'id': formationCourante.id}) }}">Modifier</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('formation_new') }}">Créer une nouvelle formation</a>
+    {% endif %}
 </div>
 {% endblock %}
 
