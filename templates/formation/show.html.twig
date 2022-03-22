@@ -8,15 +8,15 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Identifiant</th>
                 <td>{{ formation.id }}</td>
             </tr>
             <tr>
-                <th>NomCourt</th>
+                <th>Nom court</th>
                 <td>{{ formation.nomCourt }}</td>
             </tr>
             <tr>
-                <th>NomLong</th>
+                <th>Nom long</th>
                 <td>{{ formation.nomLong }}</td>
             </tr>
         </tbody>
@@ -24,7 +24,7 @@
 
     <a href="{{ path('formation_index') }}">Retour</a>
 
-    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier cette formation</a>
+    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
 
     {{ include('formation/_delete_form.html.twig') }}
 {% endblock %}
