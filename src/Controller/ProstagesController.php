@@ -36,7 +36,7 @@ class ProstagesController extends AbstractController
     }
 
     /**
-     * @Route("/admin/ajouter/stage", name="prostages_ajouterStage")
+     * @Route("/user/ajouter/stage", name="prostages_ajouterStage")
      */
     public function ajoutStage(Request $requeteHttp, EntityManagerInterface $manager)
     {

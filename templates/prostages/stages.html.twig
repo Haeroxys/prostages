@@ -20,7 +20,7 @@ Stages
         </div>
     </a>
     {% endfor %}
-    {% if is_granted('ROLE_ADMIN') %}
+    {% if is_granted('ROLE_USER') %}
     <a href="{{path('prostages_ajouterStage')}}" >Ajouter un stage</a>
     {% endif %}
     <!--END CARTES STAGES-->
