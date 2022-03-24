@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,6 +21,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Le nom d'utilisateur doit être renseigné")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 180,
+     *      minMessage = "Le nom d'utilisateur doit faire au minimum {{ limit }} caractères",
+     *      maxMessage = "Le nom d'utilisateur doit faire au maximum {{ limit }} caractères"
+     * )
      */
     private $username;
 
@@ -31,11 +39,17 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Le mot de passe doit être renseigné")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank(message="Le nom doit être renseigné")
+     * @Assert\Length(
+     *      max = 25,
+     *      maxMessage = "Le nom doit faire au maximum {{ limit }} caractères"
+     * )
      */
     private $nom;
 
@@ -85,7 +99,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self

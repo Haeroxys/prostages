@@ -10,7 +10,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.username }}
+            You are already logged in as : {{ app.user.username }}
         </div>
     {% else %}
 
@@ -39,6 +39,8 @@
     <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
     </button>
+
+    <a href="{{path('app_ajouterNouvelUtilisateur')}}">S'inscrire</a>
 
     {% endif %}
 
